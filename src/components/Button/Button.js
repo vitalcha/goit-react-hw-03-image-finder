@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import s from './Button.module.css';
+import Proppes from 'prop-types';
+import abc from './Button.modal.css';
 
-const Button = ({ handleClick }) => {
-  return (
-    <button className={s.Button} onClick={handleClick} type="button">
+const Button = ({ ChangePage }) => (
+  <>
+    <button onClick={ChangePage} type="button" className={abc.Button}>
       Load more
     </button>
-  );
-};
+  </>
+);
+export default Button;
 
 Button.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  ChangePage: Proppes.func.isRequired,
 };
-
-export default Button;

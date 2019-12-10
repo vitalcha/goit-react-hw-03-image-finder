@@ -1,46 +1,44 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import s from './Searchbar.module.css';
+import Proppes from 'prop-types';
+import abc from './SearchBar.module.css';
 
 export default class SearchBar extends Component {
   static propTypes = {
-    onSearch: PropTypes.func.isRequired,
+    onSearch: Proppes.func.isRequired,
   };
 
   state = {
-    searchQuery: '',
+    query: '',
   };
 
   handleChange = e => {
-    this.setState({ searchQuery: e.target.value });
+    this.setState({ query: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { searchQuery } = this.state;
-    this.props.onSearch(searchQuery);
-    this.setState({ searchQuery: '' });
+    const { query } = this.state;
+    this.props.onSearch(query);
+
+    this.setState({ query: '' });
   };
 
   render() {
-    const { searchQuery } = this.state;
-
+    const { query } = this.state;
     return (
-      <header className={s.Searchbar}>
-        <form className={s.SearchForm} onSubmit={this.handleSubmit}>
-          <button type="submit" className={s.SearchFormButton}>
-            <span className={s.SearchFormButtonLabel}>Search</span>
+      <header className={abc.Searchbar}>
+        <form onSubmit={this.handleSubmit} className={abc.SearchForm}>
+          <button type="submit" className={abc.SearchFormButton}>
+            <span className={abc.SearchFormButtonLabel}>Search</span>
           </button>
-
           <input
-            className={s.SearchFormInput}
+            className={abc.SearchFormInput}
             type="text"
             autoComplete="off"
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
+            // autoFocus="on"
             placeholder="Search images and photos"
+            value={query}
             onChange={this.handleChange}
-            value={searchQuery}
           />
         </form>
       </header>
